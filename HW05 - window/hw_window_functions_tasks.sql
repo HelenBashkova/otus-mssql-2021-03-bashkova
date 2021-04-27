@@ -93,7 +93,7 @@ INNER JOIN  [Sales].[Invoices] i
 	ON IlS.InvoiceID = i.InvoiceID AND i.[InvoiceDate] BETWEEN '2015-01-01' and '2015-12-31' 
 INNER JOIN [Sales].[Customers] c
 	ON i.[CustomerID]=c.[CustomerID]
-ORDER BY I.[InvoiceDate], i.InvoiceID
+ORDER BY I.[InvoiceDate]
 ----------------
 /*
 3. Вывести список 2х самых популярных продуктов (по количеству проданных) 
