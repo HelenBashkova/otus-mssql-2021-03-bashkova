@@ -129,7 +129,7 @@ ORDER BY MNTH, TopQ DESC
 Для этой задачи НЕ нужно писать аналог без аналитических функций.
 */
 
-SELECT si.StockItemID, si.[StockItemName],
+SELECT si.StockItemID, si.[StockItemName], si.[Brand], si.[UnitPrice],
 	ROW_NUMBER() OVER(PARTITION BY LEFT(si.[StockItemName],1) ORDER BY si.[StockItemName]) AS RN, 
 	COUNT([StockItemID]) OVER() AS CNT,
 	COUNT(LEFT(si.[StockItemName],1)) OVER(PARTITION BY LEFT(si.[StockItemName],1)) CNTLETTER,
