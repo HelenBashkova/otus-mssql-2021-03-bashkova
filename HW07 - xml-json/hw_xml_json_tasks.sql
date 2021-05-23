@@ -149,10 +149,18 @@ SELECT
 	[UnitPrice] AS 'UnitPrice'
 FROM [Warehouse].[StockItems]
 FOR XML PATH ('Item'), ROOT ('StockItems')
+--------------------------
+DECLARE @XmlTitle AS VARCHAR(MAX)= '<?xml version="1.0" encoding="UTF-8"?>'
+	
+   -- SET @command= 'bcp "SELECT TOP 1 [Code] from  [tec_Dev].[dbo].[MasterXml] where PurchaseOrderID='+          
+        -- CAST( @PurchaseOrderID As varchar(20))+'" queryout '            
+         -- +@uploadFolder + CAST(@PurchaseOrderID AS varchar(20))+'.xml' +' -T -N -c -C65001'
+    SET @command = 'bcp "SELECT '+@XmlTitle+'"[StockItemName] AS \'@Name\', [SupplierID] AS \'SupplierID\', [UnitPackageID] AS \'Package/UnitPackageID\', [OuterPackageID] AS \'Package/OuterPackageID\', [QuantityPerOuter] AS \'Package/QuantityPerOuter\', [TypicalWeightPerUnit] AS \'Package/TypicalWeightPerUnit\', [LeadTimeDays] AS \'LeadTimeDays\', [IsChillerStock] AS \'IsChillerStock\', [TaxRate] AS \'TaxRate\', [UnitPrice] AS \'UnitPrice\' FROM [Warehouse].[StockItems] FOR XML PATH (\'Item\'), ROOT (\'StockItems\')" queryout res.xml -d WideWorldImporters -x -c -T'
+    print @command
 
-
+EXEC xp_cmdshell @command 
 /*
-3. В таблице Warehouse.StockItems в колонке CustomFields есть данные в JSON.
+3. В таблице Warehouse.StockItems  колонке CustomFields есть данные в JSON.
 Написать SELECT для вывода:
 - StockItemID
 - StockItemName
@@ -186,3 +194,4 @@ SELECT [StockItemID], [StockItemName], JSON_QUERY(CustomFields,'$.Tags') AS Tags
 FROM [Warehouse].[StockItems]
 	CROSS APPLY OPENJSON(CustomFields,'$.Tags') AS Tags
 WHERE Tags.Value='Vintage'
+
