@@ -147,26 +147,46 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[DocIn](
-	[DocInID] [bigint] NOT NULL,
-	[DocTypeID] [int] NOT NULL,
-	[Number] [nvarchar](15) NOT NULL,
-	[Date] [datetime2](7) NOT NULL,
-	[DocInSum] [decimal](18, 2) NOT NULL,
-	[ParentDocIn] [bigint] NOT NULL,
-	[Sum] [decimal](18, 2) NOT NULL,
- CONSTRAINT [PK_DocIn] PRIMARY KEY CLUSTERED 
+CREATE TABLE [DocBase]
 (
-	[DocInID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+ [DocBaseID]       bigint identity(1,1) NOT NULL ,
+ [DocTypeID]       int NOT NULL ,
+ [Number]          nvarchar(29) NOT NULL ,
+ [Date]            date NOT NULL ,
+ [DocBaseSum]      decimal(18,2) NOT NULL ,
+ [ParentDocBaseID] bigint NOT NULL ,
+
+
+ CONSTRAINT [PK_DocBaseID] PRIMARY KEY CLUSTERED ([DocBaseID] ASC),
+ CONSTRAINT [FK_DocBase_DocType] FOREIGN KEY ([DocTypeID])  REFERENCES [DocType]([DocTypeID])
+);
 GO
+
+
+EXEC sp_addextendedproperty @name = N'MS_Description', @value = N'Это входящие требования, являясь для юриста основой создания дальнейших документов', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'DocBase';
+GO
+
+
+-- CREATE TABLE [dbo].[DocIn](
+	-- [DocInID] [bigint] NOT NULL,
+	-- [DocTypeID] [int] NOT NULL,
+	-- [Number] [nvarchar](15) NOT NULL,
+	-- [Date] [datetime2](7) NOT NULL,
+	-- [DocInSum] [decimal](18, 2) NOT NULL,
+	-- [ParentDocIn] [bigint] NOT NULL,
+	-- [Sum] [decimal](18, 2) NOT NULL,
+ -- CONSTRAINT [PK_DocIn] PRIMARY KEY CLUSTERED 
+-- (
+	-- [DocInID] ASC
+-- )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+-- ) ON [PRIMARY]
+-- GO
 /****** Object:  Table [dbo].[DocinDocout]    Script Date: 28.06.2021 0:14:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[DocinDocout](
+/* CREATE TABLE [dbo].[DocinDocout](
 	[DocinDocoutID] [bigint] NOT NULL,
 	[DocInID] [bigint] NOT NULL,
 	[DocOutID] [bigint] NOT NULL,
@@ -175,45 +195,73 @@ CREATE TABLE [dbo].[DocinDocout](
 	[DocinDocoutID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
+GO */
 /****** Object:  Table [dbo].[DocOut]    Script Date: 28.06.2021 0:14:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[DocOut](
-	[DocOutID] [bigint] NOT NULL,
-	[NomenclatureID] [int] NOT NULL,
-	[PenaltyTypeID] [int] NOT NULL,
-	[JudicialOrganID] [int] NOT NULL,
-	[DocOutDateCr] [datetime2](7) NOT NULL,
-	[DocOutDateReg] [datetime2](7) NOT NULL,
-	[DocOutNN] [bigint] NOT NULL,
-	[DocOutTotalSum] [decimal](17, 2) NOT NULL,
-	[DocOutPersons] [smallint] NULL,
-	[DocOutAnnulDate] [datetime2](7) NULL,
-	[DocOutAnnulReason] [nvarchar](300) NULL,
-	[JudicalOrganDate] [datetime2](7) NOT NULL,
-	[DocOutAddressID] [bigint] NOT NULL,
-	[DocOutExecutive] [nvarchar](80) NOT NULL,
-	[DocOutArgSubject] [varchar](255) NOT NULL,
-	[Notes] [nvarchar](max) NULL,
-	[ProcessNumber] [nvarchar](10) NOT NULL,
-	[ThirdPersons] [nvarchar](250) NOT NULL,
-	[Canceling] [bit] NOT NULL,
-	[OrdCancelCaseDate] [datetime2](7) NOT NULL,
-	[OrdCancelCaseNumber] [nvarchar](20) NOT NULL,
-	[DocOutParentID] [bigint] NOT NULL,
-	[DocTypeID] [int] NOT NULL,
-	[StatusID] [int] NOT NULL,
-	[EmployeeID] [int] NOT NULL,
-	[LegalDecisionID] [bigint] NULL,
- CONSTRAINT [PK_Docout] PRIMARY KEY CLUSTERED 
+CREATE TABLE [DocOut]
 (
-	[DocOutID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+ [DocOutID]            bigint identity(1,1) NOT NULL ,
+ [NomenclatureID]      int NOT NULL ,
+ [PenaltyTypeID]       int NOT NULL ,
+ [JudicialOrganID]     int NOT NULL ,
+ [DocOutNN]            bigint NOT NULL ,
+ [DocOutPersons]       smallint NULL ,
+ [JudicalOrganDate]    date NOT NULL ,
+ [DocOutAddressID]     bigint NOT NULL ,
+ [DocOutExecutive]     nvarchar(80) NOT NULL ,
+ [DocOutArgSubject]    varchar(255) NOT NULL ,
+ [Notes]               nvarchar(max) NULL ,
+ [ProcessNumber]       nvarchar(10) NOT NULL ,
+ [ThirdPersons]        nvarchar(250) NOT NULL ,
+ [Canceling]           bit NOT NULL ,
+ [OrdCancelCaseDate]   date NOT NULL ,
+ [OrdCancelCaseNumber] nvarchar(20) NOT NULL ,
+ [DocOutParentID]      bigint NOT NULL ,
+ [DocTypeID]           int NOT NULL ,
+ [EmployeeID]          int NOT NULL ,
+ [LegalDecisionID]     bigint NOT NULL ,
+
+
+ CONSTRAINT [PK_DocOutID] PRIMARY KEY CLUSTERED ([DocOutID] ASC),
+ CONSTRAINT [FK_DocOut_Nomenclature] FOREIGN KEY ([NomenclatureID])  REFERENCES [Nomenclature]([NomenclatureID]),
+ CONSTRAINT [FK_DocOut_PenaltyType] FOREIGN KEY ([PenaltyTypeID])  REFERENCES [PenaltyType]([PenaltyTypeID]),
+ CONSTRAINT [FK_DocOut_Employee] FOREIGN KEY ([EmployeeID])  REFERENCES [Employee]([EmployeeID]),
+ CONSTRAINT [FK_DocOut_LegalDecision] FOREIGN KEY ([LegalDecisionID])  REFERENCES [LegalDecision]([LegalDecisionID]),
+ CONSTRAINT [FK_DocOut_DocType] FOREIGN KEY ([DocTypeID])  REFERENCES [DocType]([DocTypeID]),
+ CONSTRAINT [FK_DocOut_JudicialOrgan] FOREIGN KEY ([JudicialOrganID])  REFERENCES [JudicialOrgan]([JudicialOrganID])
+);
 GO
+/********************************************************************************/
+CREATE TABLE [DocBaseDocOut]
+(
+ [DocBaseDocOutID] bigint identity(1,1) NOT NULL ,
+ [DocBaseID]       bigint NOT NULL ,
+ [DocOutID]        bigint NOT NULL ,
+
+
+ CONSTRAINT [PK_DocBaseDocOut] PRIMARY KEY CLUSTERED ([DocBaseDocOutID] ASC),
+ CONSTRAINT [FK_DocBaseDocOut_DocBase] FOREIGN KEY ([DocBaseID])  REFERENCES [DocBase]([DocBaseID]),
+ CONSTRAINT [FK_DocBaseDocOut_DocOut] FOREIGN KEY ([DocOutID])  REFERENCES [DocOut]([DocOutID])
+);
+GO
+/********************************************************************************/
+CREATE TABLE [DocOutState]
+(
+ [DocOutStateID]   bigint identity(1,1) NOT NULL ,
+ [StateID]        int NOT NULL ,
+ [DocOutID]        bigint NOT NULL ,
+ [DocOutStateDate] date NOT NULL ,
+
+
+ CONSTRAINT [PK_DocOutState] PRIMARY KEY CLUSTERED ([DocOutStateID] ASC),
+ CONSTRAINT [FK_DocOutState_State] FOREIGN KEY ([StateID])  REFERENCES [State]([StateID]),
+ CONSTRAINT [FK_DocOutState_DocOut] FOREIGN KEY ([DocOutID])  REFERENCES [DocOut]([DocOutID])
+);
+GO
+
 /****** Object:  Table [dbo].[DocType]    Script Date: 28.06.2021 0:14:47 ******/
 SET ANSI_NULLS ON
 GO
@@ -290,19 +338,19 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[InsurerFile](
-	[InsurerFileID] [bigint] NOT NULL,
-	[InsurerID] [int] NOT NULL,
-	[InsurerFileINumber] [nvarchar](50) NOT NULL,
-	[InsurerFileYear] [nvarchar](8) NOT NULL,
-	[InsurerFileIParentID] [bigint] NULL,
-	[DocinDocoutID] [bigint] NOT NULL,
- CONSTRAINT [PK_InsurerFile] PRIMARY KEY CLUSTERED 
-(
-	[InsurerFileID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+-- CREATE TABLE [dbo].[InsurerFile](
+	-- [InsurerFileID] [bigint] NOT NULL,
+	-- [InsurerID] [int] NOT NULL,
+	-- [InsurerFileINumber] [nvarchar](50) NOT NULL,
+	-- [InsurerFileYear] [nvarchar](8) NOT NULL,
+	-- [InsurerFileIParentID] [bigint] NULL,
+	-- [DocinDocoutID] [bigint] NOT NULL,
+ -- CONSTRAINT [PK_InsurerFile] PRIMARY KEY CLUSTERED 
+-- (
+	-- [InsurerFileID] ASC
+-- )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+-- ) ON [PRIMARY]
+-- GO
 /****** Object:  Table [dbo].[JudicialOrgan]    Script Date: 28.06.2021 0:14:47 ******/
 SET ANSI_NULLS ON
 GO
@@ -424,14 +472,15 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Status](
-	[StatusID] [int] IDENTITY(1,1) NOT NULL,
-	[StatusName] [nvarchar](150) NOT NULL,
- CONSTRAINT [PK_Status] PRIMARY KEY CLUSTERED 
+CREATE TABLE [State]
 (
-	[StatusID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+ [StateID]   int identity(1,1) NOT NULL ,
+ [StateName] nvarchar(150) NOT NULL ,
+ [Note]      nvarchar(max) NOT NULL ,
+
+
+ CONSTRAINT [PK_State] PRIMARY KEY CLUSTERED ([StateID] ASC)
+);
 GO
 ALTER TABLE [dbo].[Department]  WITH CHECK ADD  CONSTRAINT [FK_Department_OPFR] FOREIGN KEY([OPFRID])
 REFERENCES [dbo].[OPFR] ([OPFRID])
