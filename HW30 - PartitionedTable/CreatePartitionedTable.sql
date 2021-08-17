@@ -54,9 +54,9 @@ ADD FILE
 TO FILEGROUP partition4fg;  
 GO  
 
-DROP TABLE IF EXISTS  [Sales].[InvoicesByYear];
-DROP PARTITION SCHEME [fnRangeInvoicesPS];
-DROP PARTITION FUNCTION [fnRangeInvoicesY];
+--DROP TABLE IF EXISTS  [Sales].[InvoicesByYear];
+--DROP PARTITION SCHEME [fnRangeInvoicesPS];
+--DROP PARTITION FUNCTION [fnRangeInvoicesY];
 
 CREATE PARTITION FUNCTION fnRangeInvoicesY (int)  
     AS RANGE LEFT FOR VALUES (2013, 2014, 2015) ;  
