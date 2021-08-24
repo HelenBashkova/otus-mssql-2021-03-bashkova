@@ -1,0 +1,5 @@
+USE Lawyer;
+GO
+CREATE SCHEMA [Application];
+CREATE SCHEMA [RefData];
+CREATE SCHEMA [JurCase];
