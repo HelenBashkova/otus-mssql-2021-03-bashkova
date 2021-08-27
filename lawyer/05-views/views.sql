@@ -1,6 +1,6 @@
 USE [Lawyer]
 GO
-/****** Object:  View [RefData].[vInsurers]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [RefData].[vInsurers]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -15,7 +15,7 @@ AS
 	SELECT [InsurerID], [InsurerRegNum], CONCAT_WS(' ',[InsurerLastName], [InsurerFirstName],  [InsurerMiddleName])  as Name  FROM [RefData].[Insurer] IndivInsurer
 	WHERE IndivInsurer.InsurerFullName IS NULL
 GO
-/****** Object:  View [RefData].[vInsurerFile]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [RefData].[vInsurerFile]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -28,7 +28,7 @@ AS
 	INNER JOIN [RefData].[vInsurers] ins
 		ON insfl.[InsurerID] = ins.[InsurerID]
 GO
-/****** Object:  View [RefData].[vEmployee]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [RefData].[vEmployee]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -44,7 +44,7 @@ INNER JOIN [RefData].[Department] d
 INNER JOIN [RefData].[Post] p
 	ON e.PostID = p.PostID
 GO
-/****** Object:  View [RefData].[vDocBase]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [RefData].[vDocBase]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,7 +87,7 @@ SELECT db.[DocBaseID],  db.[Number]
 	LEFT JOIN ParentDocBase pdb 
 		ON db.ParentDocBaseID = pdb.DocBaseID
 GO
-/****** Object:  View [JurCase].[vDocOutActualState]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [JurCase].[vDocOutActualState]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,7 +107,7 @@ SELECT ds.DocOutID, ds.DocOutStateDate, s.StateName FROM [JurCase].[DocOutState]
 	INNER JOIN [RefData].[State] s
 		ON ds.StateID = s.StateID
 GO
-/****** Object:  View [JurCase].[vLegalDecision]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [JurCase].[vLegalDecision]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -120,7 +120,7 @@ FROM [JurCase].[LegalDecision] ld
 INNER JOIN [RefData].[StateLegalDecision] sld
 	ON ld.[StateLegalDecisionID] = sld.[StateLegalDecisionID]
 GO
-/****** Object:  View [JurCase].[vDocOut]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [JurCase].[vDocOut]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,8 +131,9 @@ GO
 
 
 
+
 --SET STATISTICS IO, TIME ON;
-CREATE      VIEW [JurCase].[vDocOut]
+CREATE       VIEW [JurCase].[vDocOut]
 AS
   SELECT CONCAT_WS('-', (CONCAT_WS('/', nmcl.[Number], CAST(nmcl.[NN] AS nvarchar(100)))), do.[DocOutNN]) FullNumber,   
       pt.[PenaltyTypeID],
@@ -168,6 +169,7 @@ AS
 		,lvd.[DateToPU]
 		,lvd.[LegalDecisionSummDenied]
 		,lvd.[StateLegalDecisionName]
+		,do.DocOutID
 	FROM [JurCase].[DocOut] do
 	INNER JOIN [RefData].[Nomenclature] nmcl
 		ON do.[NomenclatureID] = nmcl.[NomenclatureID]
@@ -198,7 +200,7 @@ AS
 	
 
 GO
-/****** Object:  View [JurCase].[vDocOutMovement]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [JurCase].[vDocOutMovement]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -212,7 +214,7 @@ SELECT  ds.DocOutID
 	INNER JOIN [RefData].[State] s
 		ON ds.StateID = s.StateID
 GO
-/****** Object:  View [JurCase].[vDocOutState_del]    Script Date: 24.08.2021 16:54:04 ******/
+/****** Object:  View [JurCase].[vDocOutState_del]    Script Date: 27.08.2021 17:32:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

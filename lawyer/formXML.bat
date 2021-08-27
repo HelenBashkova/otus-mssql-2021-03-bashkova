@@ -1,0 +1,1 @@
+bcp "exec [Lawyer].[Application].[FormXMLDocOut] @DocOutID = 7" queryout "C:\Users\GGG\Desktop\LENA\test.xml" -T -c -t,

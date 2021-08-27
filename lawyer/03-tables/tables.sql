@@ -1,6 +1,6 @@
 USE [Lawyer]
 GO
-/****** Object:  Table [JurCase].[DocBaseDocOut]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [JurCase].[DocBaseDocOut]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -16,7 +16,7 @@ CREATE TABLE [JurCase].[DocBaseDocOut](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [JurCase].[DocOut]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [JurCase].[DocOut]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -48,7 +48,7 @@ CREATE TABLE [JurCase].[DocOut](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [JurCase].[DocOutState]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [JurCase].[DocOutState]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -64,7 +64,7 @@ CREATE TABLE [JurCase].[DocOutState](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [JurCase].[InsurerFile]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [JurCase].[InsurerFile]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -80,7 +80,7 @@ CREATE TABLE [JurCase].[InsurerFile](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [JurCase].[JudicialOrgan]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [JurCase].[JudicialOrgan]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -96,7 +96,7 @@ CREATE TABLE [JurCase].[JudicialOrgan](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [JurCase].[LegalDecision]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [JurCase].[LegalDecision]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +116,7 @@ CREATE TABLE [JurCase].[LegalDecision](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[Court]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[Court]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -130,7 +130,7 @@ CREATE TABLE [RefData].[Court](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[Department]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[Department]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -145,7 +145,7 @@ CREATE TABLE [RefData].[Department](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[DocBase]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[DocBase]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -164,7 +164,7 @@ CREATE TABLE [RefData].[DocBase](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[DocType]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[DocType]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -179,7 +179,7 @@ CREATE TABLE [RefData].[DocType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[Employee]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[Employee]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -198,7 +198,7 @@ CREATE TABLE [RefData].[Employee](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[Insurer]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[Insurer]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -235,7 +235,7 @@ CREATE TABLE [RefData].[Insurer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[JudicialOrgan]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[JudicialOrgan]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -251,7 +251,7 @@ CREATE TABLE [RefData].[JudicialOrgan](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[Nomenclature]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[Nomenclature]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -268,7 +268,7 @@ CREATE TABLE [RefData].[Nomenclature](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[OPFR]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[OPFR]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -289,7 +289,7 @@ CREATE TABLE [RefData].[OPFR](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[PenaltyType]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[PenaltyType]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -303,7 +303,7 @@ CREATE TABLE [RefData].[PenaltyType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[Person]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[Person]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -319,7 +319,7 @@ PRIMARY KEY CLUSTERED
 )
 AS NODE ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[Post]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[Post]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -333,7 +333,7 @@ CREATE TABLE [RefData].[Post](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[State]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[State]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -348,7 +348,7 @@ CREATE TABLE [RefData].[State](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [RefData].[StateLegalDecision]    Script Date: 24.08.2021 16:51:14 ******/
+/****** Object:  Table [RefData].[StateLegalDecision]    Script Date: 27.08.2021 17:26:19 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -369,10 +369,20 @@ REFERENCES [RefData].[DocBase] ([DocBaseID])
 GO
 ALTER TABLE [JurCase].[DocBaseDocOut] CHECK CONSTRAINT [FK_DocBaseDocOut_DocBase]
 GO
+ALTER TABLE [JurCase].[DocBaseDocOut]  WITH CHECK ADD  CONSTRAINT [FK_DocBaseDocOut_DocBaseDocOut] FOREIGN KEY([DocBaseDocOutID])
+REFERENCES [JurCase].[DocBaseDocOut] ([DocBaseDocOutID])
+GO
+ALTER TABLE [JurCase].[DocBaseDocOut] CHECK CONSTRAINT [FK_DocBaseDocOut_DocBaseDocOut]
+GO
 ALTER TABLE [JurCase].[DocBaseDocOut]  WITH CHECK ADD  CONSTRAINT [FK_DocBaseDocOut_DocOut] FOREIGN KEY([DocOutID])
 REFERENCES [JurCase].[DocOut] ([DocOutID])
 GO
 ALTER TABLE [JurCase].[DocBaseDocOut] CHECK CONSTRAINT [FK_DocBaseDocOut_DocOut]
+GO
+ALTER TABLE [JurCase].[DocBaseDocOut]  WITH CHECK ADD  CONSTRAINT [FK_DocBaseDocOut_InsurerFile] FOREIGN KEY([InsurerFileID])
+REFERENCES [JurCase].[InsurerFile] ([InsurerFileID])
+GO
+ALTER TABLE [JurCase].[DocBaseDocOut] CHECK CONSTRAINT [FK_DocBaseDocOut_InsurerFile]
 GO
 ALTER TABLE [JurCase].[DocOut]  WITH CHECK ADD  CONSTRAINT [FK_DocOut_DocType] FOREIGN KEY([DocTypeID])
 REFERENCES [RefData].[DocType] ([DocTypeID])
